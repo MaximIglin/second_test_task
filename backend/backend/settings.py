@@ -71,6 +71,9 @@ DATABASES = {
         'OPTIONS': {
             'read_default_file': '/path/to/my.cnf',
         },
+        'TEST': {
+            'NAME': 'test_db',
+        },
     }
 }
 
