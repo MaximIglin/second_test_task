@@ -17,4 +17,4 @@ class UsersSerializer(ModelSerializer):
     own_houses_id = PrimaryKeyRelatedField(source='houses_set', many=True, read_only=True)
     class Meta:
         model = Users
-        fields = ['name', 'salary', 'date', 'own_houses_id']
+        fields = ['id', 'name', 'salary', 'date', 'own_houses_id']
