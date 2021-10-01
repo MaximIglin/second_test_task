@@ -19,21 +19,21 @@ def get_all_users_houses(user_id):
     return users_houses
 
 
-def update_house_data(request, house):
+def update_house_data(data, house):
     """This function for update house data"""
-    house.cost = request.data['cost']
-    house.user = get_user_by_id(request.data['user_id'])
-    house.adress = request.data['adress']
+    house.cost = data['cost']
+    house.user = get_user_by_id(data['user_id'])
+    house.adress = data['adress']
     house.save()
     return house
 
 
-def add_house(request):
+def add_house(data):
     """This function for add house to user"""
-    user_id = request.data['user_id']
+    user_id = data['user_id']
     house_user = get_user_by_id(user_id)
-    house_cost = request.data['cost']
-    house_adress = request.data['adress']
+    house_cost = data['cost']
+    house_adress = data['adress']
     house = Houses.objects.create(cost = house_cost, user=house_user, adress=house_adress)
     house.save()
     return house

@@ -59,7 +59,7 @@ class UpdateHouseData(APIView):
     def post(self, request, pk):
         try:
             house = get_house_by_id(pk)
-            update_house_data(request, house)
+            update_house_data(request.data, house)
             serializer = HousesSerializer(house)
             return Response(serializer.data, status=status.HTTP_205_RESET_CONTENT)
         except ObjectDoesNotExist:
@@ -72,7 +72,7 @@ class AddOrDeleteUsersHouseApi(APIView):
     """This api for add house for user or delete house for user"""
     def post(self, request):
         try:
-            house = add_house(request)
+            house = add_house(request.data)
             return Response(HousesSerializer(house).data, status=status.HTTP_205_RESET_CONTENT)
         except ObjectDoesNotExist:
                 return Response({'Error': "Данный пользователь не существует"}, status=status.HTTP_404_NOT_FOUND)
