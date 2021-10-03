@@ -100,6 +100,8 @@ class UserUpdateApi(APIView):
             user = get_user_by_id(user_id)
             update_user(user)
             return Response(UsersSerializer(user).data, status=status.HTTP_205_RESET_CONTENT)
+        except KeyError:
+            return Response({"Error":"Для обновления пользователя требуется id"}, status=status.HTTP_400_BAD_REQUEST)
         except ObjectDoesNotExist:
             return Response({"Error:":"Пользователь не найдён"})
         except ValueError:
