@@ -16,4 +16,12 @@
 
 - #### Обновить юзера: <br>http://46.101.44.134/api/user_update/ (POST) body(json): {"id":1}
 
+- #### Добавить или перезаписать файл .json http://46.101.44.134/api/file_system/ (POST) body(json): {"language_code":ru-RU",  "data":"some_data_array"}
+
+- #### Удалить файл .json http://46.101.44.134/api/file_system/ (DELETE) body(json): {"language_code":ru-RU"}
+
+- #### Добавить фотографию, если её размер менее 1мб: http://46.101.44.134/api/images/ (POST) <br>FORM-DATA: "image": image.jpg
+
+
+
 
