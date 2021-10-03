@@ -1,4 +1,5 @@
 from .models import Users, Houses
+import datetime
 
 
 def get_user_by_id(id):
@@ -51,6 +52,6 @@ def update_user(user):
         user.save()
     hours, minutes, seconds = (user.date.timetuple()[3:6])    
     if (hours * 60 * 60 * 1000 + minutes * 60 * 1000 + seconds * 1000) > 43200000:
-        user.date = f"1990-01-01T{hours}:{minutes}:{seconds}" 
+        user.date = datetime.datetime(1990, 1, 1) 
         user.save()
     return user   
