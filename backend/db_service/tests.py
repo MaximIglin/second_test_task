@@ -1,4 +1,5 @@
 from django.test import TestCase
+import datetime
 
 from .services import (get_user_by_id, get_house_by_id, get_all_users_houses,
                        update_house_data, add_house, delete_house_by_id, update_user
@@ -10,8 +11,8 @@ from .models import Users, Houses
 class TestServices(TestCase):
 
     def setUp(self):
-        user_1 = Users.objects.create(name="Max", salary=70000, date="2002-05-06T22:25:22")
-        user_2 = Users.objects.create(name="Alex", salary=50000, date="2000-05-06T10:25:22")
+        user_1 = Users.objects.create(name="Max", salary=70000, date="2000-05-06T23:25:22")
+        user_2 = Users.objects.create(name="Alex", salary=50000,date=datetime.datetime(1990,1,1))
         house_1 = Houses.objects.create(cost=5000000, user=user_1, adress="Зеленоград")
         house_2 = Houses.objects.create(cost=4000000, user=user_2, adress="Химки")
 
@@ -61,5 +62,5 @@ class TestServices(TestCase):
         updated_user_2 = update_user(Users.objects.get(id=1))
         self.assertEqual(updated_user_1.salary, 100000)
         self.assertEqual(updated_user_2.salary, 70000)
-        self.assertEqual(str(updated_user_1.date), "2000-05-06 10:25:22+00:00")
-        self.assertEqual(str(updated_user_2.date), "1990-01-01T22:25:22")
+        self.assertEqual(str(updated_user_1.date), '1990-01-01 00:00:00+00:00')
+        self.assertEqual(str(updated_user_2.date), str(datetime.datetime(1990,1,1)))
