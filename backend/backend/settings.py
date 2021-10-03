@@ -64,10 +64,10 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'gb_btcminer8',
-        'HOST': 'mysql93.1gb.ru',
-        'USER': 'gb_btcminer8',
-        'PASSWORD': 'HFF8Q-Wae3RW',
+        'NAME': '',
+        'HOST': '',
+        'USER': '',
+        'PASSWORD': '',
         'OPTIONS': {
             'read_default_file': '/path/to/my.cnf',
         },
